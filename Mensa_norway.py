@@ -1,41 +1,54 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 driver = webdriver.Chrome()
 mensa_norway_url = "https://test.mensa.no/"
 driver.get(mensa_norway_url)
 driver.maximize_window()
 
-age_1850 = driver.find_element(By.CLASS_NAME, "ageselect_1850")
+age_1850_class_name = "ageselect_1850"
+age_1850 = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.CLASS_NAME, age_1850_class_name)))
+#age_1850 = driver.find_element(By.CLASS_NAME, "ageselect_1850")
 age_1850.click()
-time.sleep(2)
+#time.sleep(2)
 
-start_button = driver.find_element(By.ID, "startTest")
+start_button_id = "startTest"
+start_button = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, start_button_id)))
+#start_button = driver.find_element(By.ID, "startTest")
 start_button.click()
 
 
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-time.sleep(3)
-q1_a_button = driver.find_element(By.XPATH, "//div[@id='question_0']/div/div/div[@data-answerid='0']")
+#time.sleep(3)
+q1_a_button_xpath = "//div[@id='question_0']/div/div/div[@data-answerid='0']"
+q1_a_button = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, q1_a_button_xpath)))
+#q1_a_button = driver.find_element(By.XPATH, "//div[@id='question_0']/div/div/div[@data-answerid='0']")
 q1_a_button.click()
-time.sleep(3)
+#time.sleep(3)
 
-q2_b_button = driver.find_element(By.XPATH, "//div[@id='question_1']/div/div/div[@data-answerid='1']")
+q2_b_button_xpath = "//div[@id='question_1']/div/div/div[@data-answerid='1']"
+q2_b_button = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH, q2_b_button_xpath)))
+#q2_b_button = driver.find_element(By.XPATH, "//div[@id='question_1']/div/div/div[@data-answerid='1']")
 q2_b_button.click()
-time.sleep(2)
+#time.sleep(2)
 
-q3_c_button = driver.find_element(By.XPATH,"//div[@id='question_2']/div/div/div[@data-answerid='2']")
+q3_c_button_xpath = "//div[@id='question_2']/div/div/div[@data-answerid='2']"
+q3_c_button = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,q3_c_button_xpath)))
 q3_c_button.click()
-time.sleep(2)
+#time.sleep(2)
 
-q4_d_button = driver.find_element(By.XPATH,"//div[@id='question_3']/div/div/div[@data-answerid='3']")
+q4_d_button_xpath = "//div[@id='question_3']/div/div/div[@data-answerid='3']"
+q4_d_button = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.XPATH,q4_d_button_xpath)))
 q4_d_button.click()
-time.sleep(2)
+#time.sleep(2)
 
-q5_e_button = driver.find_element(By.XPATH, "//div[@id='question_4']/div/div/div[@data-answerid='4']")
+q5_e_button_xpath = "//div[@id='question_4']/div/div/div[@data-answerid='4']"
+q5_e_button = driver.find_element(By.XPATH, q5_e_button_xpath)
 q5_e_button.click()
-time.sleep(2)
+#time.sleep(2)
 
 q6_f_button = driver.find_element(By.XPATH,"//div[@id='question_5']/div/div/div[@data-answerid='5']")
 q6_f_button.click()
